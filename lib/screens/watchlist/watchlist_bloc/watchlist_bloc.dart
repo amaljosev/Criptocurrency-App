@@ -1,9 +1,7 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:criptoapp/models/crpto_models.dart';
-import 'package:criptoapp/screens/widgets/data/data_list.dart';
-
-
+import 'package:criptoapp/screens/data/data_list.dart';
 part 'watchlist_event.dart';
 part 'watchlist_state.dart';
 

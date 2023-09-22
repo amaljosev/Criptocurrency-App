@@ -1,6 +1,6 @@
-import 'package:criptoapp/screens/Widgets/coins/coins_bloc/coins_bloc.dart';
-import 'package:criptoapp/screens/Widgets/watchlist/watchlist_bloc/watchlist_bloc.dart';
+import 'package:criptoapp/screens/coins/coins_bloc/coins_bloc.dart';
 import 'package:criptoapp/screens/home/home_screen.dart';
+import 'package:criptoapp/screens/watchlist/watchlist_bloc/watchlist_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

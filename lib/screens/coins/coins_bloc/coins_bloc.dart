@@ -2,8 +2,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:criptoapp/Api/api_fuctions.dart';
 import 'package:criptoapp/models/crpto_models.dart';
-import 'package:criptoapp/screens/widgets/data/data_list.dart';
-
+import 'package:criptoapp/screens/data/data_list.dart';
 
 part 'coins_event.dart';
 part 'coins_state.dart';
@@ -29,6 +28,5 @@ class CoinsBloc extends Bloc<CoinsEvent, CoinsState> {
       AddToWatchListEvent event, Emitter<CoinsState> emit) {
     watchList.add(event.coin);
     emit(CoinAddedMessageState());
-    
   }
 }

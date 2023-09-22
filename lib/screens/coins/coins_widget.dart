@@ -1,4 +1,4 @@
-import 'package:criptoapp/screens/Widgets/coins/coins_bloc/coins_bloc.dart';
+import 'package:criptoapp/screens/coins/coins_bloc/coins_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -22,8 +22,8 @@ class _CoinsWidgetState extends State<CoinsWidget> {
   Widget build(BuildContext context) {
     return SizedBox(
         child: BlocConsumer<CoinsBloc, CoinsState>(
-  buildWhen: (previous, current) => current is! CoinActionState,
-  listenWhen: (previous, current) => current is CoinActionState,
+      buildWhen: (previous, current) => current is! CoinActionState,
+      listenWhen: (previous, current) => current is CoinActionState,
       listener: (context, state) {
         if (state is CoinAddedMessageState) {
           ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
@@ -38,7 +38,10 @@ class _CoinsWidgetState extends State<CoinsWidget> {
             shrinkWrap: true,
             itemCount: state.criptoList.length,
             itemBuilder: (context, index) => ListTile(
-              leading: Text(state.criptoList[index].name),
+              leading: CircleAvatar(
+                backgroundImage: NetworkImage(state.criptoList[index].image),
+              ),
+              title: Text(state.criptoList[index].name),
               trailing: IconButton(
                   onPressed: () => context
                       .read<CoinsBloc>()
