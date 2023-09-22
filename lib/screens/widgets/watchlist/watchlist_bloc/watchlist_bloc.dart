@@ -1,7 +1,8 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:criptoapp/models/crpto_models.dart';
-import 'package:criptoapp/screens/Widgets/watchlist/watchListData.dart';
+import 'package:criptoapp/screens/widgets/data/data_list.dart';
+
 
 part 'watchlist_event.dart';
 part 'watchlist_state.dart';
@@ -20,6 +21,7 @@ class WatchlistBloc extends Bloc<WatchlistEvent, WatchlistState> {
   FutureOr<void> removeCoin(
       RemoveCoinEvent event, Emitter<WatchlistState> emit) {
     watchList.removeAt(event.index);
-     emit(WatchlistSuccessState(watchLists: watchList));
+    emit(CoinRemovedMessageState());
+    emit(WatchlistSuccessState(watchLists: watchList));
   }
 }

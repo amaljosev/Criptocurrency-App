@@ -22,7 +22,16 @@ class _WatchListWidgetState extends State<WatchListWidget> {
   Widget build(BuildContext context) {
     return SizedBox(
         child: BlocConsumer<WatchlistBloc, WatchlistState>(
-      listener: (context, state) {},
+          buildWhen: (previous, current) => current is! WatchlistActionState,
+          listenWhen: (previous, current) => current is WatchlistActionState, 
+      listener: (context, state) {
+        if (state is CoinRemovedMessageState) {
+          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+              behavior: SnackBarBehavior.floating,
+              margin: EdgeInsets.all(10),
+              content: Text("Coin Removed Successfuly!!"))); 
+        }
+      },
       builder: (context, state) {
         if (state is WatchlistSuccessState) {
           return ListView.builder(

@@ -22,7 +22,16 @@ class _CoinsWidgetState extends State<CoinsWidget> {
   Widget build(BuildContext context) {
     return SizedBox(
         child: BlocConsumer<CoinsBloc, CoinsState>(
-      listener: (context, state) {},
+  buildWhen: (previous, current) => current is! CoinActionState,
+  listenWhen: (previous, current) => current is CoinActionState,
+      listener: (context, state) {
+        if (state is CoinAddedMessageState) {
+          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+              behavior: SnackBarBehavior.floating,
+              margin: EdgeInsets.all(10),
+              content: Text("Coin Added Successfuly!!")));
+        }
+      },
       builder: (context, state) {
         if (state is CoinSuccessState) {
           return ListView.builder(
@@ -37,10 +46,11 @@ class _CoinsWidgetState extends State<CoinsWidget> {
                   icon: const Icon(Icons.add)),
             ),
           );
-        }else if(state is CoinLoadingState){
-          return const Center(child: CircularProgressIndicator(),);
-        }
-         else {
+        } else if (state is CoinLoadingState) {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        } else {
           return const SizedBox.shrink();
         }
       },
