@@ -1,4 +1,5 @@
 import 'package:criptoapp/screens/watchlist/watchlist_bloc/watchlist_bloc.dart';
+import 'package:criptoapp/screens/widgets/watchlist_card_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -39,16 +40,16 @@ class _WatchListWidgetState extends State<WatchListWidget> {
       },
       builder: (context, state) {
         if (state is WatchlistSuccessState) {
-          return ListView.builder(
-            itemCount: state.watchLists.length,
-            itemBuilder: (context, index) => ListTile(
-                leading: Text(state.watchLists[index].name),
-                trailing: TextButton.icon(
-                    onPressed: () => context
-                        .read<WatchlistBloc>()
-                        .add(RemoveCoinEvent(index: index)),
-                    icon: const Icon(Icons.delete),
-                    label: const Text('Remove'))),
+          return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ListView.separated(
+              itemBuilder: (context, index) => WatchlistCardWidget(
+                  criptoObject: state.watchLists[index], index: index),
+              separatorBuilder: (context, index) => const SizedBox(
+                height: 20,
+              ),
+              itemCount: state.watchLists.length,
+            ),
           );
         } else {
           return const SizedBox.expand();

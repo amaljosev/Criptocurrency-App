@@ -1,9 +1,8 @@
-
 import 'package:criptoapp/screens/coins/coins_widget.dart';
 import 'package:criptoapp/screens/watchlist/watchlist_widget.dart';
 import 'package:flutter/material.dart';
 
-class ScreenHome extends StatelessWidget { 
+class ScreenHome extends StatelessWidget {
   const ScreenHome({super.key});
 
   @override
@@ -30,5 +29,3 @@ class ScreenHome extends StatelessWidget {
     );
   }
 }
-
-
