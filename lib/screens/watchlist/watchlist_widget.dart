@@ -1,4 +1,3 @@
-
 import 'package:criptoapp/screens/watchlist/watchlist_bloc/watchlist_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -23,14 +22,19 @@ class _WatchListWidgetState extends State<WatchListWidget> {
   Widget build(BuildContext context) {
     return SizedBox(
         child: BlocConsumer<WatchlistBloc, WatchlistState>(
-          buildWhen: (previous, current) => current is! WatchlistActionState,
-          listenWhen: (previous, current) => current is WatchlistActionState, 
+      buildWhen: (previous, current) => current is! WatchlistActionState,
+      listenWhen: (previous, current) => current is WatchlistActionState,
       listener: (context, state) {
         if (state is CoinRemovedMessageState) {
           ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
               behavior: SnackBarBehavior.floating,
               margin: EdgeInsets.all(10),
-              content: Text("Coin Removed Successfuly!!"))); 
+              duration: Duration(seconds: 1),
+              backgroundColor: Colors.red,
+              content: Text(
+                "Coin Removed Successfuly",
+                style: TextStyle(color: Colors.white),
+              )));
         }
       },
       builder: (context, state) {
