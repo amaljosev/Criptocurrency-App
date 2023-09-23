@@ -35,7 +35,7 @@ class CoinCardWidget extends StatelessWidget {
                     backgroundImage: NetworkImage(criptoObject.image),
                   ),
                 ),
-                Text('data'),
+                Text(criptoObject.symbol),
               ],
             ),
           ),
